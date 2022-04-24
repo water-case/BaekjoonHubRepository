@@ -17,8 +17,9 @@ public class Main {
 		int[] lis=new int[N];
 		Arrays.fill(lis, Integer.MAX_VALUE);
 		for(int i=0; i<N; i++) {
-			if(Arrays.binarySearch(lis, nums[i])<0) {
-				lis[-Arrays.binarySearch(lis, nums[i])-1]=nums[i];
+			int b=Arrays.binarySearch(lis, nums[i]);
+			if(b<0) {
+				lis[-b-1]=nums[i];
 			}
 		}
 		
