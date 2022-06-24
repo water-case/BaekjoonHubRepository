@@ -44,11 +44,13 @@ public class Main {
 			}
 		}
 		
-		int res=0;
+		int res=0, cnt=0;
 		while(!pq.isEmpty()) {
 			Edge now=pq.poll();
 			if(!union(now.start, now.end)) {
 				res+=now.price;
+				if(cnt++==N)
+					break;
 			}
 		}
 		
