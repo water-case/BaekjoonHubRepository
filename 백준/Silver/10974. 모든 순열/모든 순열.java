@@ -3,6 +3,8 @@ import java.util.*;
 
 public class Main {
 
+	static StringBuilder sb=new StringBuilder();
+	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
@@ -10,15 +12,16 @@ public class Main {
 		
 		perm(N, 0, new int[N], new boolean[N+1]);
 		
+		System.out.println(sb.toString());
 		br.close();
 	}
 
 	private static void perm(int n, int cnt, int[] list, boolean[] v) {
 		if(cnt==n) {
 			for(int i=0; i<n; i++) {
-				System.out.print(list[i]+" " );
+				sb.append(list[i]).append(" ");
 			}
-			System.out.println();
+			sb.append("\n");
 		}
 		
 		for(int i=1; i<=n; i++) {
