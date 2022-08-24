@@ -10,29 +10,33 @@ public class Main {
 		
 		int n=Integer.parseInt(br.readLine());
 		
-		int min=Integer.MAX_VALUE;
 		int[] arr=new int[n];
 		st=new StringTokenizer(br.readLine()," ");
 		for(int i=0; i<n; i++) {
 			arr[i]=Integer.parseInt(st.nextToken());
-			if(min>arr[i]) min=arr[i];
 		}
 		
-		for(int i=1; i<=min; i++) {
-			int cnt=0;
-			
-			for(int j=0; j<n; j++) {
-				if(arr[j]%i == 0) {
-					cnt++;
-				}
-			}
-			
-			if(cnt==n)
+		int gcd=gcd(arr[0], arr[1]);
+		if(n==3) gcd = gcd(gcd, arr[2]);
+		
+		String other="";
+		int i=1;
+		for(i=1; i*i<gcd; i++) {
+			if(gcd%i == 0) {
 				sb.append(i).append("\n");
+				other = "\n"+gcd/i+other;
+			}
 		}
-		
-		System.out.println(sb.toString());
+		if(i*i==gcd) sb.append(i).append("\n");
+		sb.deleteCharAt(sb.length()-1);
+		System.out.println(sb.toString()+other);
 		br.close();
+	}
+	
+	static int gcd(int a, int b) {
+		b=b%a;
+		if(b==0) return a;
+		else return gcd(b,a);
 	}
 	
 }
