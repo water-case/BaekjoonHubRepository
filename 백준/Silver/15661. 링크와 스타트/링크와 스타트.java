@@ -31,25 +31,17 @@ public class Main {
 		if(cnt==N) return;
 		
 		int res1=0, res2=0;
-		ArrayList<Integer> team1=new ArrayList<>();
-		ArrayList<Integer> team2=new ArrayList<>();
-		for(int i=0; i<N; i++) {
-			if(v[i]) team1.add(i);
-			else team2.add(i);
-		}
-		if(team1.size()!=0&&team2.size()!=0) {
-			for(int i=0; i<team1.size(); i++) {
-				for(int j=i+1; j<team1.size(); j++) {
-					res1+=arr[team1.get(i)][team1.get(j)];
+		for(int i=0; i<N-1; i++) {
+			for(int j=i+1; j<N; j++) {
+				if(v[i]&&v[j]) {
+					res1+=arr[i][j];
+				}
+				if(!v[i]&&!v[j]) {
+					res2+=arr[i][j];
 				}
 			}
-			for(int i=0; i<team2.size(); i++) {
-				for(int j=i+1; j<team2.size(); j++) {
-					res2+=arr[team2.get(i)][team2.get(j)];
-				}
-			}
-			res=Math.min(res, Math.abs(res1-res2));
 		}
+		res=Math.min(res, Math.abs(res1-res2));
 		
 		v[cnt]=true;
 		SubSet(cnt+1,v);
