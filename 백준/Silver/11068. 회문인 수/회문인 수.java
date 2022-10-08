@@ -21,11 +21,9 @@ public class Main {
 					num/=i;
 				}
 				
-				ArrayList<Integer> rnums=(ArrayList<Integer>) nums.clone();
-				Collections.reverse(rnums);
-				
-				for(int j=0; j<nums.size(); j++) {
-					if(nums.get(j)!=rnums.get(j)) {
+				int size=nums.size();
+				for(int j=0; j<size/2; j++) {
+					if(nums.get(j)!=nums.get(size-j-1)) {
 						continue label;
 					}
 				}
@@ -33,9 +31,7 @@ public class Main {
 				break;
 			}
 			
-			if(chk) sb.append(1);
-			else sb.append(0);
-			sb.append("\n");
+			sb.append(chk ? "1\n" : "0\n");
 		}
 		
 		System.out.println(sb.toString());
