@@ -10,22 +10,28 @@ public class Main {
 		int N=Integer.parseInt(st.nextToken());
 		int K=Integer.parseInt(st.nextToken());
 		
-		List<Integer> nums=new ArrayList<>();
+		int[] nums=new int[N];
 		st=new StringTokenizer(br.readLine()," ");
 		for(int i=0; i<N; i++) {
-			nums.add(Integer.parseInt(st.nextToken()));
+			nums[i]=Integer.parseInt(st.nextToken());
 		}
 		
 		List<Integer> list=new ArrayList<>();
-		for(int i=0; i<=N-K; i++) {
-			int n=0;
-			for(int j=i; j<i+K; j++) {
-				n+=nums.get(j);
-			}
+		int n=0;
+		for(int i=0; i<K; i++) {
+			n+=nums[i];
+		}
+		list.add(n);
+		
+		for(int i=1; i<=N-K; i++) {
+			n=n-nums[i-1]+nums[i+K-1];
 			list.add(n);
 		}
 		
-		int res=list.stream().sorted().max(Integer::compare).orElse(0);
+		int res=Integer.MIN_VALUE;
+		for(int i : list) {
+			res=Math.max(res, i);
+		}
 		System.out.println(res);
 		br.close();
 	}
