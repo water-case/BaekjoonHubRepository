@@ -34,9 +34,7 @@ public class Main {
         
         char res=input[idx];
         while(idx-->0) {
-            int an=searchDnaNumber(input[idx]);
-            int an2=searchDnaNumber(res);
-            res=dna[an][an2];
+            res=dna[searchDnaNumber(input[idx])][searchDnaNumber(res)];
         }
         System.out.println(res);
     }
