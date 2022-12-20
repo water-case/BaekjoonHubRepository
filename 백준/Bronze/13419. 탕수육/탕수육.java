@@ -8,27 +8,22 @@ public class Main {
         StringBuilder sb=new StringBuilder();
         
         int T=Integer.parseInt(br.readLine());
-        String res1="", res2="";
         while(T-->0) {
             char[] ca=br.readLine().toCharArray();
+            StringBuilder res1=new StringBuilder();
+            StringBuilder res2=new StringBuilder();
             
-            res1=""; res2="";
-            int size=ca.length;
-            if(size%2==0) {
-                for(int i=0; i<size; i++) {
-                    if(i%2==0) res1+=ca[i];
-                    else       res2+=ca[i];
-                }
-            } else {
-                for(int i=0; i<size; i++) {
-                    if(i%2==0) res1+=ca[i];
-                    else       res2+=ca[i];
-                }
-                for(int i=0; i<size; i++) {
-                    if(i%2==0) res2+=ca[i];
-                    else       res1+=ca[i];
-                }
+            for(int i=0; i<ca.length; i++) {
+                if(i%2==0) res1.append(ca[i]);
+                else       res2.append(ca[i]);
             }
+            
+            if(ca.length%2==1) {
+                String tmp=res1.toString();
+                res1.append(res2);
+                res2.append(tmp);
+            }
+            
             sb.append(res1).append("\n").append(res2).append("\n");
         }
         
