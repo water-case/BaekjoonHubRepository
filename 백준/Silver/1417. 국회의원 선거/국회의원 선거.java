@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 
-    static ArrayList<Integer> otherPick = new ArrayList<>();
+    static PriorityQueue<Integer> otherPick = new PriorityQueue<>((o1, o2) -> -Integer.compare(o1, o2));
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -11,7 +11,7 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         int dasomPick = Integer.parseInt(br.readLine());
         for(int i = 0; i < N-1; i++){
-            otherPick.add(Integer.parseInt(br.readLine()));
+            otherPick.offer(Integer.parseInt(br.readLine()));
         }
 
         int res = (N != 1) ? solve(dasomPick) : 0;
@@ -23,12 +23,10 @@ public class Main {
         int preDasomPick = dasomPick;
 
         while(true) {
-            Collections.sort(otherPick, (o1, o2) -> -Integer.compare(o1, o2));
-
-            int num = otherPick.get(0);
+            int num = otherPick.poll();
             if(num < dasomPick) break;
 
-            otherPick.set(0, num-1);
+            otherPick.offer(num-1);
             dasomPick++;
         }
 
