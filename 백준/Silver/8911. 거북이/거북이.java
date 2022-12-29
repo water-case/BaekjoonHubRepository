@@ -20,13 +20,13 @@ public class Main {
             for(char order : program) {
                 switch (order) {
                     case 'F':
-                        dx = x + delx[d];
-                        dy = y + dely[d];
+                        x += delx[d];
+                        y += dely[d];
                         move();
                         break;
                     case 'B':
-                        dx = x + delx[(d+2)%4];
-                        dy = y + dely[(d+2)%4];
+                        x += delx[(d+2)%4];
+                        y += dely[(d+2)%4];
                         move();
                         break;
                     case 'L':
@@ -37,7 +37,7 @@ public class Main {
                         break;
                 }
             }
-            
+
             int res = (maxX - minX) * (maxY - minY);
             sb.append(res).append("\n");
         }
@@ -57,12 +57,10 @@ public class Main {
     }
 
     private static void move() {
-        minX = Math.min(minX, dx);
-        maxX = Math.max(maxX, dx);
-        minY = Math.min(minY, dy);
-        maxY = Math.max(maxY, dy);
-        x=dx;
-        y=dy;
+        minX = Math.min(minX, x);
+        maxX = Math.max(maxX, x);
+        minY = Math.min(minY, y);
+        maxY = Math.max(maxY, y);
     }
 
 }
