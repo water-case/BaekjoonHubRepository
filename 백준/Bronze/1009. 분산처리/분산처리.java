@@ -43,7 +43,7 @@ public class Main {
 
             int[] data = new int[2];
             data[0] = Integer.parseInt(st.nextToken());
-            data[1] = Integer.parseInt(st.nextToken());
+            data[1] = (Integer.parseInt(st.nextToken()) % 4) + 4;
 
             datas.add(data);
         }
