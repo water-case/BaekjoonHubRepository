@@ -4,11 +4,11 @@
 
 ### 성능 요약
 
-메모리: 19460 KB, 시간: 152 ms
+메모리: 17252 KB, 시간: 180 ms
 
 ### 분류
 
-브루트포스 알고리즘(bruteforcing), 두 포인터(two_pointer)
+브루트포스 알고리즘(bruteforcing), 슬라이딩 윈도우(sliding_window), 두 포인터(two_pointer)
 
 ### 문제 설명
 
