@@ -25,21 +25,13 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for(int i=0; i<N; i++) {
-            if(i%2==0) {
-                sb.append("*");
-            } else {
-                sb.append(" ");
-            }
+            sb.append(i%2==0 ? "*" : " ");
         }
 
         sb.append("\n");
 
         for(int i=0; i<N; i++) {
-            if(i%2==0) {
-                sb.append(" ");
-            } else {
-                sb.append("*");
-            }
+            sb.append(i%2==0 ? " " : "*");
         }
 
         sb.append("\n");
