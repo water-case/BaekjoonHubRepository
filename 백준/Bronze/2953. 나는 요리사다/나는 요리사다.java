@@ -13,30 +13,33 @@ public class Main {
     private static void init() throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        scoreList = new ArrayList<>();
+        score = new ArrayList<>();
         for(int i=0; i<5; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-
-            int[] score = new int[]{i+1, 0};
+            int cal = 0;
             for(int j=0; j<4; j++) {
-                score[1] += Integer.parseInt(st.nextToken());
+                cal += Integer.parseInt(st.nextToken());
             }
-
-            scoreList.add(score);
+            score.add(cal);
         }
 
-        br.close();
     }
 
     static String res;
-    static List<int[]> scoreList;
+    static List<Integer> score;
 
     private static void solve() {
-        int[] winner = scoreList.stream().max((o1, o2) -> {
-                return Integer.compare(o1[1], o2[1]);
-        }).get();
+        int idx = 0, max = Integer.MIN_VALUE;
 
-        res = winner[0] + " " + winner[1];
+        for(int i=0; i<5; i++) {
+            int nowScore = score.get(i);
+            if(nowScore > max) {
+                idx = i+1;
+                max = nowScore;
+            }
+        }
+
+        res = idx + " " + max;
     }
 
 }
