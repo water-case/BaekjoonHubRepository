@@ -65,12 +65,12 @@ public class Main {
 
         @Override
         public int compareTo(Medal o) {
-            int res = Integer.compare(gold, o.gold);
+            int res = -Integer.compare(gold, o.gold);
             if(res == 0) {
-                res = Integer.compare(silver, o.silver);
+                res = -Integer.compare(silver, o.silver);
             }
             if(res == 0) {
-                res = Integer.compare(bronze, o.bronze);
+                res = -Integer.compare(bronze, o.bronze);
             }
             return res;
         }
