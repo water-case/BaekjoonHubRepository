@@ -42,7 +42,9 @@ public class Main {
         int res = 0;
 
         int mid = (start + end) / 2;
-        int sum = calcSum(mid);
+        int sum = numList.stream()
+                        .mapToInt(num -> { return num>=mid ? mid : num; })
+                        .sum();
 
         if(start > end) {
             return end;
@@ -52,20 +54,6 @@ public class Main {
             res = binarySearch(mid+1, end);
         } else {
             res = binarySearch(start, mid-1);
-        }
-
-        return res;
-    }
-
-    private static int calcSum(int mid) {
-        int res = 0;
-
-        for(Integer i : numList) {
-            if(i>=mid) {
-                res += mid;
-            } else {
-                res += i;
-            }
         }
 
         return res;
