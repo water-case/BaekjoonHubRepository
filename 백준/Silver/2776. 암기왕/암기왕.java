@@ -43,14 +43,15 @@ public class Main {
     private static void solve() {
         StringBuilder res = new StringBuilder();
 
-        tcList.stream().forEach(tc -> {
+        for(TC tc : tcList) {
             List<Integer> nList = tc.nList;
             List<Integer> mList = tc.mList;
 
-            mList.stream()
-                    .map(m -> isExistNum(m, nList))
-                    .forEach(chk -> res.append(chk ? 1 : 0).append("\n"));
-        });
+            for(int m : mList) {
+                boolean chk =  isExistNum(m, nList);
+                res.append(chk ? 1 : 0).append("\n");
+            }
+        }
 
         System.out.println(res);
     }
@@ -77,7 +78,7 @@ public class Main {
         return res;
     }
 
-    static class TC {
+    private static class TC {
         List<Integer> nList, mList;
 
         public TC(List<Integer> nList, List<Integer> mList) {
