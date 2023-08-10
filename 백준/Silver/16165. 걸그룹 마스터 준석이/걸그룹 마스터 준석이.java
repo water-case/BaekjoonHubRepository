@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -18,7 +17,7 @@ public class Main {
             String teamName = br.readLine(); // 팀 이름
             int headCount = Integer.parseInt(br.readLine()); // 인원수
 
-            Set<String> memberSet = new HashSet<>();
+            Set<String> memberSet = new TreeSet<>();
             while(headCount-->0) {
                 String memberName = br.readLine();
                 memberSet.add(memberName);
@@ -35,7 +34,7 @@ public class Main {
 
             switch(pType) {
                 case 0 :
-                    for(String memberName : teamMap.get(teamNameOrMemName).stream().sorted().collect(Collectors.toList())) {
+                    for(String memberName : teamMap.get(teamNameOrMemName)) {
                         res.append(memberName).append("\n");
                     }
                     break;
